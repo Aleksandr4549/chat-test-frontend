@@ -4,7 +4,12 @@
 
 [Демо проекта](https://chat-test-frontend.herokuapp.com/)  
 
-[Backend](https://github.com/Aleksandr4549/chat-test-backend)
+[Backend](https://github.com/Aleksandr4549/chat-test-backend)  
+
+#### Данные для входа в тестовый аккаунт  
+
+login: test@test.com  
+password: 123
 
 ### Старт  
 
