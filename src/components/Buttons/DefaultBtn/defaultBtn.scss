@@ -1,0 +1,58 @@
+$blue: #a8ddfd;
+$disabledGrey: rgb(150, 150, 150);
+
+.default__btn {
+  padding: 10px;
+  border: 1px solid darken($blue, 30%);
+  outline: none;
+  width: 100px;
+  background-color: transparent;
+  border-radius: 5px;
+  color: darken($blue, 30%);
+  cursor: pointer;
+  transition: .2s linear all;
+
+  &:hover {
+    border-color: darken($blue, 35%);
+    color: #fff;
+    background-color: darken($blue, 35%);
+  }
+
+  @media screen and (max-width: 480px) {
+    width: 80px;
+    font-size: .8rem;
+  }
+}
+
+.disabled {
+  color: $disabledGrey;
+  border-color: $disabledGrey;
+  cursor: default;
+
+  &:hover {
+    border-color: $disabledGrey;
+    color: $disabledGrey;
+    background-color: transparent;
+  }
+}
+
+.default__btn__load::before {
+  content: '';
+  display: block;
+  position: absolute;
+  left: -150px;
+  top: 0;
+  height: 100%;
+  width: 150px;
+  background: linear-gradient(to right, transparent 0%, #E8E8E8 50%, transparent 100%);
+  animation: load 1s cubic-bezier(0.4, 0.0, 0.2, 1) infinite;
+}
+
+@keyframes load {
+  from {
+      left: -150px;
+  }
+  to   {
+      left: 100%;
+  }
+}

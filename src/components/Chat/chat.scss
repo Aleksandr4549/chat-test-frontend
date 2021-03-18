@@ -1,0 +1,19 @@
+.chat__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0 0 0 20%;
+  padding-top: 10px;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #2B2C3D;
+
+  @media screen and (max-width: 600px) {
+    margin-left: 5%;
+  }
+}
+
+.chat__input__wrapper {
+  position: sticky;
+  bottom: 0;
+}

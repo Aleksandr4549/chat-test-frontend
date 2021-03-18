@@ -1,0 +1,122 @@
+$grey: #404A52;
+$green: #3C8065;
+
+@mixin commonPseudoElem {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+@mixin pseudoElAfter ($color, $side) {
+  @include commonPseudoElem();
+  border-top: 15px solid $color;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  top: -1px;
+  #{$side}: -17px;
+}
+
+@mixin pseudoElBefore ($color, $side) {
+  @include commonPseudoElem();
+  border-top: 17px solid $color;
+  border-left: 16px solid transparent;
+  border-right: 16px solid transparent;
+  top: 0;
+  #{$side}: -15px;
+}
+
+@mixin messagePseudoElem {
+  &::after {
+    @include pseudoElAfter($grey, left);
+  }
+
+  &::before {
+    @include pseudoElBefore($grey, left);
+  }
+}
+
+@mixin ownMessagePseudoElem {
+  &::after {
+    @include pseudoElAfter($green, right);
+  }
+
+  &::before {
+    @include pseudoElBefore($green, right);
+  }
+}
+
+@mixin message {
+  position: relative;
+  margin: 0 0 10px 25px;
+  padding: 10px;
+  width: 200px;
+  color: #e1e5eb;
+  border-radius: 10px;
+  word-wrap: break-word;
+
+  @media screen and (max-width: 600px) {
+    margin: 0 0 10px 40px;
+  }
+
+  @media screen and (max-width: 520px) {
+    width: 150px;
+  }
+
+  @media screen and (max-width: 600px) {
+    margin: 0 0 10px 30px;
+  }
+}
+
+.message__container {
+  @include message;
+  @include messagePseudoElem;
+  background-color: $grey;
+  border: 1px solid $grey;
+}
+
+.message__container_own {
+  @include message;
+  @include ownMessagePseudoElem;
+  margin: 0 20px 10px 0;
+  left: calc(100% - 220px);
+  background-color: $green;
+  border: 1px solid $green;
+
+  @media screen and (max-width: 600px) {
+    left: calc(100% - 250px);
+  }
+
+  @media screen and (max-width: 520px) {
+    left: calc(100% - 206px);
+  }
+}
+
+.message__text {
+  margin-bottom: 10px;
+}
+
+.message__info {
+  display: flex;
+  justify-content: space-between;
+
+  & button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: #12A3D7;
+    cursor: pointer;
+    transition: .2s linear all;
+
+    &:hover {
+      color: darken($grey, 60%);
+    }
+  }
+
+  & span {
+    text-transform: uppercase;
+    color: darken($grey, 50%);
+    font-size: 10px;
+    cursor: default;
+  }
+}
